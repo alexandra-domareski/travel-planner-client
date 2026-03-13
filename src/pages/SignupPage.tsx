@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -46,68 +48,41 @@ const SignupPage = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-[#3A2A1A] mb-2">
-              Name (optional)
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              autoComplete="name"
-              className="w-full rounded-md border border-[#D4C8BE] bg-white p-2 focus:outline-none focus:ring-2 focus:ring-[#D28625]"
-            />
-          </div>
+          <Input
+            label="Name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-[#3A2A1A] mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-              required
-              className="w-full rounded-md border border-[#D4C8BE] bg-white p-2 focus:outline-none focus:ring-2 focus:ring-[#D28625]"
-            />
-          </div>
+          <Input
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-[#3A2A1A] mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="new-password"
-              required
-              className="w-full rounded-md border border-[#D4C8BE] bg-white p-2 focus:outline-none focus:ring-2 focus:ring-[#D28625]"
-            />
-          </div>
+          <Input
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-[#3A2A1A] mb-2">
-              Confirm password
-            </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              autoComplete="new-password"
-              required
-              className="w-full rounded-md border border-[#D4C8BE] bg-white p-2 focus:outline-none focus:ring-2 focus:ring-[#D28625]"
-            />
-          </div>
+          <Input
+            label="Confirm password"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full rounded-md px-4 py-2 text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#60A5FA] disabled:opacity-70 disabled:cursor-not-allowed transition"
-          >
-            {submitting ? "Creating account..." : "Signup"}
-          </button>
+          <Button type="submit" className="w-full">
+            Signup
+          </Button>
         </form>
 
         <p className="mt-4 text-center text-sm text-gray-600">
