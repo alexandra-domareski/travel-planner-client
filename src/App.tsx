@@ -5,6 +5,11 @@ import SignupPage from "./pages/SignupPage";
 import NotFound from "./components/common/NotFound";
 import DashboardPage from "./pages/DashboardPage";
 import WelcomePage from "./pages/WelcomePage";
+import ProtectedRoute from "./components/common/ProtectedRoute";
+import CreateTrip from "./features/trips/components/CreateTrip";
+import EditTrip from "./features/trips/components/EditTrip";
+import TripsPage from "./features/trips/pages/TripsPage";
+import TripOverviewPage from "./features/trips/pages/TripOverviewPage";
 
 function App() {
   return (
@@ -15,7 +20,19 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
-          <Route path="dashboard" element={<DashboardPage />} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/dashboard" element={<TripsPage />} />
+            <Route path="/trips" element={<TripsPage />} />
+            <Route path="/trips/new" element={<CreateTrip />} />
+            <Route path="/trips/:id/edit" element={<EditTrip />} />
+            <Route path="/trips/:id" element={<TripOverviewPage />} />
+          </Route>
 
           <Route path="/*" element={<NotFound />} />
         </Routes>

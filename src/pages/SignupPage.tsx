@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 
@@ -11,7 +11,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { register } = useAuth();
+  const { signup } = useAuth();
   const nav = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,7 +26,7 @@ const SignupPage = () => {
 
       setSubmitting(true);
       const trimmedName = name.trim();
-      await register(email, password, trimmedName ? trimmedName : undefined);
+      await signup(email, password, trimmedName ? trimmedName : undefined);
       nav("/login");
     } catch {
       setError("Registration failed. Please try again.");
@@ -35,7 +35,7 @@ const SignupPage = () => {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F7F2F1] p-6">
+    <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] p-6">
       <div className="bg-white rounded-xl shadow-md p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold text-[#3A2A1A] mb-6">
           Create your account

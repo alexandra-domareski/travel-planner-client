@@ -1,10 +1,12 @@
+import type { Trip } from "../features/trips/types/trip.types";
+
 export type User = {
   id: string;
   email: string;
   password: string;
-  name: string;
-  avatarURL: string;
-  createdAt: string;
+  name?: string | null;
+  avatarURL?: string | null;
+  createdAt: Date;
 
-  //   trips: Trips[];
+  trips?: Trip[];
 };

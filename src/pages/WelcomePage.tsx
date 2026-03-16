@@ -4,7 +4,7 @@ import logo from "../assets/images/travel-planner-logo.png";
 
 const WelcomePage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F7F2F1] p-6">
+    <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] p-6">
       <div className="bg-white rounded-xl shadow-md p-8 max-w-md w-full">
         <img
           src={logo}

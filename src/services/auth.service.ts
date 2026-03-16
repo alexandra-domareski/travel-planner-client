@@ -1,4 +1,4 @@
-import apiClient from "../services/api.client";
+import apiClient from "./apiClient";
 
 interface AuthResponse {
   user: {
@@ -25,7 +25,7 @@ export const login = async (credentials: object): Promise<AuthResponse> => {
   return data;
 };
 
-export const register = async (credentials: object): Promise<AuthResponse> => {
-  const { data } = await apiClient.post("/auth/register", credentials);
+export const signup = async (credentials: object): Promise<AuthResponse> => {
+  const { data } = await apiClient.post("/auth/signup", credentials);
   return data;
 };
